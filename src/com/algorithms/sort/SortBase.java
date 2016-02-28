@@ -15,7 +15,7 @@ public class SortBase {
 		return true;
 	}
 
-	public boolean isSOrted(Object[] a, Comparator c) {
+	public boolean isSorted(Object[] a, Comparator c) {
 		return isSorted(a, c, 0, a.length - 1);
 	}
 
