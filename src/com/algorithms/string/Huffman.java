@@ -99,14 +99,40 @@ public class Huffman {
     }
 
     public static void expand() {
-
+        Node root = readTrie();
+        int N = BinaryStdIn.readInt();
+        for(int i = 0; i < N; i++){
+            Node x = root;
+            while(!x.isLeaf()){
+                boolean bit = BinaryStdIn.readBoolean();
+                if(bit)
+                    x = x.right;
+                else
+                    x = x.left;
+            }
+            BinaryStdOut.write(x.ch,8);
+        }
     }
+
+    private static Node readTrie(){
+        boolean bit = BinaryStdIn.readBoolean();
+        if(bit){
+            return  new Node(BinaryStdIn.readChar(),-1,null,null);
+        }else{
+            return  new Node('\0',-1,readTrie(),readTrie());
+        }
+    }
+
+
 
     public static void main(String[] args) {
         try {
-            System.setIn(new FileInputStream("input/abra.txt"));
-            System.setOut(new PrintStream(new FileOutputStream("input/huffmanabra.txt")));
-            compress();
+            //System.setIn(new FileInputStream("input/abra.txt"));
+            System.setIn(new FileInputStream("input/huffmanabra.txt"));
+            //System.setOut(new PrintStream(new FileOutputStream("input/huffmanabra.txt")));
+            System.setOut(new PrintStream(new FileOutputStream("input/abra2.txt")));
+            //compress();
+            expand();
             BinaryStdOut.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
