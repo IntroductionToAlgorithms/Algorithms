@@ -38,6 +38,12 @@ public class TrieST {
             return x;
         }
         int c = word.charAt(d);
+
+
+        if(c >= R) {
+            System.out.println("c == " + c);
+            return x;
+        }
         x.next[c] = put(x.next[c], word, d + 1);
         return x;
     }
@@ -98,7 +104,7 @@ public class TrieST {
 
     public static void main(String[] args){
         try {
-            System.setIn(new FileInputStream("input/magna-carta.txt"));
+            System.setIn(new FileInputStream("input/dickens.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
